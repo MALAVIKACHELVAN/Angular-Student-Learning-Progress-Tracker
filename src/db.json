@@ -1,0 +1,35 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "title": "Angular",
+      "instructor": "Malavika",
+      "duration": "6 weeks",
+      "category": "Frontend",
+      "price": 2000,
+      "description": "Learn Angular from basics to intermediate level.",
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "title": "Spring Boot Essentials",
+      "instructor": "John",
+      "duration": "8 weeks",
+      "category": "Backend",
+      "price": 2499,
+      "description": "Understand Spring Boot and build REST APIs.",
+      "status": "Inactive"
+    },
+    {
+      "id": "Gau1YbL-brQ",
+      "title": "Java",
+      "instructor": "Malavika",
+      "duration": "4 Months",
+      "category": "Tech",
+      "price": 159000,
+      "description": "This is the awseome java training",
+      "status": "Active"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

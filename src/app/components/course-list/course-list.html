@@ -1,0 +1,25 @@
+<h2>Course List</h2>
+
+@if (loading) {
+  <p>Loading courses...</p>
+}
+
+@if (!loading) {
+  @if (Courses.length > 0) {
+    @for (course of Courses;track $index) {
+      <div class="course-card">
+        <h3>{{ course.title }}</h3>
+        <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+        <p><strong>Duration:</strong> {{ course.duration }}</p>
+        <p><strong>Category:</strong> {{ course.category }}</p>
+        <p><strong>Price:</strong> ₹{{ course.price }}</p>
+        <p><strong>Status:</strong> {{ course.status }}</p>
+        <p><strong>Description:</strong> {{ course.description }}</p>
+        <hr />
+        <button [routerLink]="['/edit-course', course.id]">Edit</button>
+      </div>
+    }
+  } @else {
+    <p>No courses available.</p>
+  }
+}

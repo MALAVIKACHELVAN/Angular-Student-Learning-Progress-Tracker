@@ -1,0 +1,15 @@
+form {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+button {
+  padding: 10px 16px;
+  cursor: pointer;
+}

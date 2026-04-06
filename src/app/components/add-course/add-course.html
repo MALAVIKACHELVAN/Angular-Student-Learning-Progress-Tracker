@@ -1,0 +1,45 @@
+<h2>Add New Course</h2>
+
+<form (ngSubmit)="onSubmit()" #courseForm="ngForm">
+
+  <label>Title:</label>
+  <input type="text" name="title" [(ngModel)]="newCourse.title" required />
+
+  <br><br>
+
+  <label>Instructor:</label>
+  <input type="text" name="instructor" [(ngModel)]="newCourse.instructor" required />
+
+  <br><br>
+
+  <label>Duration:</label>
+  <input type="text" name="duration" [(ngModel)]="newCourse.duration" required />
+
+  <br><br>
+
+  <label>Category:</label>
+  <input type="text" name="category" [(ngModel)]="newCourse.category" required />
+
+  <br><br>
+
+  <label>Price:</label>
+  <input type="number" name="price" [(ngModel)]="newCourse.price" required />
+
+  <br><br>
+
+  <label>Description:</label>
+  <textarea name="description" [(ngModel)]="newCourse.description" required></textarea>
+
+  <br><br>
+
+  <label>Status:</label>
+  <select name="status" [(ngModel)]="newCourse.status" required>
+    <option value="">Select Status</option>
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+  </select>
+
+  <br><br>
+
+  <button type="submit" [disabled]="courseForm.invalid">Add Course</button>
+</form>
