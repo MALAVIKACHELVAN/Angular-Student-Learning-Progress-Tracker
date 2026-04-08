@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Course } from '../../models/Course';
 import { CourseService } from '../../services/course-service';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-course-list',
@@ -13,24 +14,13 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrls: ['./course-list.css'],
 })
 export class CourseList implements OnInit{
-  constructor(private courseService :CourseService){
+  courses$!: Observable<Course[]>;
+  constructor(private courseService :CourseService)
+  {
+    
   }
-  Courses:Course[]=[];
-  loading:boolean = true; // hide loading
   ngOnInit(): void {
-    this.loadCourses();
+    this.courses$=this.courseService.getCourses();
   }
-  loadCourses():void{
-    this.courseService.getCourses().subscribe({
-      next:(data)=>{
-        this.Courses=data;
-        console.log(this.Courses);
-        this.loading = false; // hide loading
-      },
-      error:(err)=>{
-        console.error("Error fetching courses :",err);
-        this.loading=false;
-      }
-    })
-  }
+  
 }

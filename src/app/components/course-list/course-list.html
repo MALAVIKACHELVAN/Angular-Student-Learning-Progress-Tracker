@@ -1,12 +1,8 @@
 <h2>Course List</h2>
 
-@if (loading) {
-  <p>Loading courses...</p>
-}
 
-@if (!loading) {
-  @if (Courses.length > 0) {
-    @for (course of Courses;track $index) {
+
+    @for (course of (courses$ | async); track course.id) {
       <div class="course-card">
         <h3>{{ course.title }}</h3>
         <p><strong>Instructor:</strong> {{ course.instructor }}</p>
@@ -19,7 +15,3 @@
         <button [routerLink]="['/edit-course', course.id]">Edit</button>
       </div>
     }
-  } @else {
-    <p>No courses available.</p>
-  }
-}

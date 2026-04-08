@@ -5,6 +5,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from '../../models/Course';
 import { CourseService } from '../../services/course-service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-course',
@@ -14,7 +15,7 @@ import { CourseService } from '../../services/course-service';
   styleUrls: ['./edit-course.css'],
 })
 export class EditCourse implements OnInit {
-  course: Course | null = null;
+  course$!:Observable<Course>;
   loading: boolean = true;
 
   constructor(
@@ -25,28 +26,16 @@ export class EditCourse implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadCourse(id);
+    this.course$=this.courseService.getCourseById(id);
+    this.loading=false;
   }
 
-  loadCourse(id: number): void {
-    this.courseService.getCourseById(id).subscribe({
-      next: (data) => {
-        this.course = data;
-        this.loading = false;
-        console.log("Loading successful",this.course.title);
-      },
-      error: (err) => {
-        console.error('Error fetching course:', err);
-        this.loading = false;
-      },
-    });
-  }
-
-  updateCourse(form: NgForm): void {
-    if (this.course) {
-      this.courseService.updateCourse(Number(this.course.id), this.course).subscribe({
+  updateCourse(form:NgForm,course:Course): void {
+    if (this.course$) {
+      this.courseService.updateCourse(Number(course.id), course).subscribe({
         next: () => {
           alert('Course updated successfully!');
+          console.log(form.value);
           this.router.navigate(['/courses']);
         },
         error: (err) => {

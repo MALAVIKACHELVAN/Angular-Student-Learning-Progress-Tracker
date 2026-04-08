@@ -8,7 +8,7 @@
       "category": "Frontend",
       "price": 2000,
       "description": "Learn Angular from basics to intermediate level.",
-      "status": "Active"
+      "status": "Inactive"
     },
     {
       "id": "2",
@@ -28,6 +28,16 @@
       "category": "Tech",
       "price": 159000,
       "description": "This is the awseome java training",
+      "status": "Active"
+    },
+    {
+      "id": "HeKl-bwhbrI",
+      "title": "nn",
+      "instructor": "nnnn",
+      "duration": "nn",
+      "category": "mm",
+      "price": 0,
+      "description": "mm",
       "status": "Active"
     }
   ],

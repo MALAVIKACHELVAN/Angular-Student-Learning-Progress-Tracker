@@ -1,8 +1,8 @@
 <h2>Edit Course</h2>
 
 
-@if (course) {
-  <form #editForm="ngForm" (ngSubmit)="updateCourse(editForm)">
+@if (course$ | async; as course) {
+  <form #editForm="ngForm" (ngSubmit)="updateCourse(editForm,course)">
     <label>Title:</label>
     <input type="text" name="title" [(ngModel)]="course.title" required />
     <br /><br />
